@@ -5,6 +5,8 @@ const path = require('path');
 const app = express();
 const polls = new Map();
 
+app.use(express.static('frontend/'));
+
 app.route('/poll/:id')
     .get((req, res, err) => {
             const id = req.params.id;
@@ -14,7 +16,7 @@ app.route('/poll/:id')
                 res.end('Unknown id');
             }
 
-            const fileDirectory = path.resolve(__dirname, '.');
+            const fileDirectory = path.resolve(__dirname, '.', 'frontend/');
 
             res.sendFile('Quiz.html', {root: fileDirectory}, (err) => {
                 res.end();
@@ -39,7 +41,7 @@ app.route('/api/poll')
             ]
         });
 
-        res.redirect(`/poll/${newPollId}`);
+        res.send(newPollId);
     });
 
 app.route('/api/poll/:id')

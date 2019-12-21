@@ -4,14 +4,17 @@
     <meta charset="utf-8">
     <title>Task 3</title>
     <script>
-        function getLocation() {
-            fetch('/api/poll', {method: 'POST'});
+        async function getLocation() {
+            const res = await fetch('/api/poll', {method: 'POST', redirect: 'manual'});
+            const pollId = await res.text();
+            console.log(pollId);
+            window.location.href=`/poll/${pollId}`;
         }
     </script>
 </head>
 <body>
 <input type="button" value="Создать комнату" onclick=getLocation()><br>
 <input id="id" type="text" placeholder="Введите ID комнаты">
-<input type="button" value="Присоединиться к комнате" onclick="location.href=document.getElementById('id').value + '.html'">
+<input type="button" value="Присоединиться к комнате" onclick="location.href='/poll/' + document.getElementById('id').value">
 </body>
 </html>

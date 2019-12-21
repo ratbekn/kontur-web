@@ -97,10 +97,9 @@ function sendAnswers() {
         .then(function (response) {
             return response.json();
         })
-        .then(function (data1) {
-            document.body.innerHTML('hello)');
-        })
         .catch(alert);
+
+    document.body.innerHTML = 'hello';
 }
 
 
