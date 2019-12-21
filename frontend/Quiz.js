@@ -8,7 +8,7 @@ let obj = {
     'id': id
 };
 questions1 = {
-    'id': 1
+    'id': 1,
     'questions':[{
     'question':'Question1',
     'guesses': ['variant1', 'variant2', 'variant3'],
