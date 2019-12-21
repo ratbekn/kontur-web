@@ -69,7 +69,6 @@ app.route('/poll/:id')
         res.sendFile('./Quiz.html');
     }
 );
-
-app.listen(80, () => {
+app.listen(process.env.PORT || 5000, () => {
     console.log('Listening on 5000');
 });
