@@ -28,9 +28,12 @@ const resultsSample = [
     },
 ];
 
-function showResults(){
-    const results = document.querySelector('.results');
-    for (const question of resultsSample){
+function showResults(data){
+    let results = document.querySelector('.results');
+    results.remove();
+    let newResults = document.createElement('div');
+    newResults.setAttribute('class', 'results');
+    for (const question of data){
         const title = document.createElement('h3');
         title.innerHTML = question["question"];;
         const guesses = document.createElement('ul');
@@ -39,9 +42,23 @@ function showResults(){
             guesElem.innerHTML = "   " + gues + ": " + question["guesses"][gues];
             guesses.append(guesElem)
         }
-        results.append(title);
-        results.append(guesses);
+        newResults.append(title);
+        newResults.append(guesses);
     }
+    document.querySelector('body').append(newResults);
+}
+
+function updateResults(){
+    // fetch('/api/poll/' + id, {method: 'GET'})
+    //     .then(function (response) {
+    //         return response.json();
+    //     })
+    //     .then(function (data) {
+    //         resultsData = data;
+    //         showResults();
+    //     })
+    //     .catch(alert);
+    showResults(resultsSample);
 }
 
 // fetch('*', {method: 'POST',body:JSON.stringify(obj),headers:{'content-type': 'application/json'}})
