@@ -1,5 +1,6 @@
 const express = require('express');
 const uuid = require('uuid');
+const renderer = require('./PollRenderer');
 
 const app = express();
 const polls = new Map();
