@@ -93,10 +93,7 @@ function _addAnswerToArray() {
 
 function sendAnswers() {
     _addAnswerToArray();
-    fetch('/api/poll/' + id, {method: 'PUT'})
-        .then(function (response) {
-            return response.json();
-        })
+    fetch('/api/poll/' + id, {method: 'PUT', body:JSON.stringify(answers),headers:{'content-type': 'application/json'}})
         .catch(alert);
 
     document.body.innerHTML = 'hello';

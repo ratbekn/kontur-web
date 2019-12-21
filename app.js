@@ -85,6 +85,9 @@ app.route('/api/poll/:id')
 
         res.status(400)
             .end();
+    })
+    .put((req, res, err) => {
+        res.send("Опрос закончен, спасибо");
     });
 
 
