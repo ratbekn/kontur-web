@@ -10,7 +10,7 @@ app.route('/poll/:id')
         const poll = polls.get(id);
         if (poll === undefined) {
             res.statusCode = 400;
-            res.send('Unknown id');
+            res.end('Unknown id');
         }
         const view = renderPoll(poll);
         res.send(view);
