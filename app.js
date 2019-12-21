@@ -37,6 +37,36 @@ app.route('/api/poll')
                     id: uuid.v4(),
                     question: 'Hello',
                     guesses: ['one', 'two', 'three', 'four']
+                },
+                {
+                    id: uuid.v4(),
+                    question: 'Question 1',
+                    guesses: ['one', 'two', 'three', 'four']
+                },
+                {
+                    id: uuid.v4(),
+                    question: 'Question 2',
+                    guesses: ['one', 'two', 'three', 'four']
+                },
+                {
+                    id: uuid.v4(),
+                    question: 'Question 3',
+                    guesses: ['one', 'two', 'three', 'four']
+                },
+                {
+                    id: uuid.v4(),
+                    question: 'Question 4',
+                    guesses: ['one', 'two', 'three', 'four']
+                },
+                {
+                    id: uuid.v4(),
+                    question: 'Question 5',
+                    guesses: ['one', 'two', 'three', 'four']
+                },
+                {
+                    id: uuid.v4(),
+                    question: 'Question 6',
+                    guesses: ['one', 'two', 'three', 'four']
                 }
             ]
         });
