@@ -61,12 +61,3 @@ function updateResults(){
     showResults(resultsSample);
 }
 
-// fetch('*', {method: 'POST',body:JSON.stringify(obj),headers:{'content-type': 'application/json'}})
-//         .then(function (response) {
-//             return response.json();
-//         })
-//         .then(function (obj) {
-//             const quiz_id = document.querySelector('.quiz_id');
-//             quiz_id.innerHTML = obj['guid'];
-//         })
-//         .catch(alert);
