@@ -4,7 +4,9 @@ const uuid = require('uuid');
 const app = express();
 
 app.get('/', (req, res, err) => {
-    res.send('Hello, World!');
+    const hello_world_provider = new HelloWorldProvider();
+    const msg = hello_world_provider.get();
+    res.send(msg);
 });
 
 const polls = new Map();
