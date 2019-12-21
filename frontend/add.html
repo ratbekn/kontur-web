@@ -3,13 +3,10 @@
 <head>
     <meta charset="utf-8">
     <title>Добавление вопроса</title>
-    <script>
-        function add() {
-        }
-    </script>
 </head>
 <body>
 <form>
+
     <label>
         <input id="question" type="text" placeholder="Введите вопрос">
     </label>
@@ -21,3 +18,18 @@
     </label>
 </form>
 </body>
+<script>
+    function getId() {
+        const location = window.location.toString().split('/');
+        return location[location.length - 1];
+    }
+
+    var id = getId();
+    const id_element = document.createElement('span');
+    id_element.innerHTML = id;
+    document.body.prepend(id_element);
+
+    function add() {
+
+    }
+</script>
