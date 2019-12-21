@@ -1,13 +1,16 @@
-function getQueryParam() {
+function getId() {
     const location = window.location.toString().split('/');
     return location[location.length - 1];
 }
 
-var id = getQueryParam();
+var id = getId();
+const id_element = document.createElement('span');
+id_element.innerHTML = id;
+document.body.prepend(id_element);
 let obj = {
     'id': id
 };
-questions1 = {
+questions = {
     'id': 1,
     'questions':[{
     'question':'Question1',
@@ -28,8 +31,8 @@ answers = {
 
 let currentQuestion = 0
 
-function showNextQuestion(questions) {
-    data = questions[currentQuestion]; // пока только для одного вопроса
+function showNextQuestion() {
+    data = questions.questions[currentQuestion]; // пока только для одного вопроса
     const old_question = document.querySelector('.question');
     if (old_question) {
         old_question.remove();
@@ -56,8 +59,8 @@ function showNextQuestion(questions) {
         option_element.append(div);
         question.append(option_element);
     }
-    document.body.prepend(question);
-    if (currentQuestion === questions.length - 1) {
+    document.querySelector('.questions').append(question);
+    if (currentQuestion === questions.questions.length - 1) {
         const old_button = document.querySelector('#showNext');
         old_button.setAttribute('onclick', 'sendAnswers()');
         old_button.setAttribute('value', 'Отправить');
@@ -78,9 +81,9 @@ function _addAnswerToArray() {
     for (const option of options) {
         if (option.checked) {
             answers.results.push({
-                'question': questions[currentQuestion].question,
-                'id': questions[currentQuestion].id,
-                'answer': questions[currentQuestion].guesses[i]
+                'question': questions.questions[currentQuestion].question,
+                'id': questions.questions[currentQuestion].id,
+                'answer': questions.questions[currentQuestion].guesses[i]
             })
         }
         i += 1;
@@ -106,6 +109,7 @@ fetch('/api/poll/' + id, {method: 'GET'})
             return response.json();
         })
         .then(function (data1) {
-            showNextQuestion(data1);
+            questions = data1;
+            showNextQuestion();
         })
-        .catch(alert);
+        .catch(() => showNextQuestion());
