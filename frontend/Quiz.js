@@ -91,12 +91,15 @@ function _addAnswerToArray() {
     console.log(answers);
 }
 
-function sendAnswers() {
+async function sendAnswers() {
     _addAnswerToArray();
-    fetch('/api/poll/' + id, {method: 'PUT', body:JSON.stringify(answers),headers:{'content-type': 'application/json'}})
+    const content = await fetch('/api/poll/' + id, {method: 'PUT', body:JSON.stringify(answers),headers:{'content-type': 'application/json'}})
+        .then(function (response) {
+            return response.json();
+        })
         .catch(alert);
 
-    document.body.innerHTML = 'hello';
+    document.body.innerHTML = content;
 }
 
 
