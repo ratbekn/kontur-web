@@ -1,9 +1,9 @@
-function getQueryParam(item) {
+function getQueryParam() {
     var dirs = window.location.pathname.split('/');
     return dirs[dirs.length - 1];
 }
 
-var guid = getQueryParam('guid');
+var guid = getQueryParam();
 let obj = {
     'guid': guid
 };
@@ -11,7 +11,7 @@ let obj = {
 const quiz_id = document.querySelector('.quiz_id');
 quiz_id.innerHTML = obj['guid'];
 
-const results = [
+const resultsSample = [
     {
         "question": "gender",
         "guesses": {
@@ -28,24 +28,21 @@ const results = [
     },
 ];
 
-function ShowResults(results){
+function showResults(){
     const results = document.querySelector('.results');
-    for (const question in results){
-        const h2 = document.createElement('h2');
-        h2.innerHTML = question["question"];;
-        const guesses = document.createElement('div');
-        guesses.setAttribute('class', 'guesses');
-        for (const gues in guesses){
-            const gues = document.createElement('br');
-            gues.innerHTML = "   " + guesses[gues];
-            guesses.append(gues)
+    for (const question of resultsSample){
+        const title = document.createElement('h3');
+        title.innerHTML = question["question"];;
+        const guesses = document.createElement('ul');
+        for (const gues in question["guesses"]){
+            const guesElem = document.createElement('li');
+            guesElem.innerHTML = "   " + gues + ": " + question["guesses"][gues];
+            guesses.append(guesElem)
         }
-        results.append(h2);
+        results.append(title);
         results.append(guesses);
     }
 }
-
-ShowResults(results);
 
 // fetch('*', {method: 'POST',body:JSON.stringify(obj),headers:{'content-type': 'application/json'}})
 //         .then(function (response) {
