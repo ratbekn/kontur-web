@@ -26,6 +26,25 @@ app.route('/poll/:id')
         }
     );
 
+app.route('/poll/edit/:id')
+    .get((req, res, err) => {
+            const id = req.params.id;
+            const poll = polls.get(id);
+            if (poll === undefined) {
+                res.statusCode = 400;
+                res.end('Unknown id');
+            }
+
+            const fileDirectory = path.resolve(__dirname, '.', 'frontend/');
+
+            res.sendFile('add.html', {root: fileDirectory}, (err) => {
+                res.end();
+
+                if (err) throw(err);
+            });
+        }
+    );
+
 app.route('/api/poll')
     .post((req, res, err) => {
         const newPollId = uuid.v4();

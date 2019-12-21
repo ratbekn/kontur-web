@@ -8,7 +8,7 @@
             const res = await fetch('/api/poll', {method: 'POST', redirect: 'manual'});
             const pollId = await res.text();
             console.log(pollId);
-            window.location.href=`/poll/${pollId}`;
+            window.location.href=`/poll/edit/${pollId}`;
         }
     </script>
 </head>
