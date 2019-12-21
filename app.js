@@ -1,6 +1,5 @@
 const express = require('express');
 const uuid = require('uuid');
-const renderer = require('./PollRenderer');
 
 const app = express();
 const polls = new Map();
@@ -13,8 +12,7 @@ app.route('/poll/:id')
             res.statusCode = 400;
             res.end('Unknown id');
         }
-        const view = renderPoll(poll);
-        res.send(view);
+        res.sendFile('./poll.html');
     }
 );
 

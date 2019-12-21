@@ -7,7 +7,7 @@ function renderQuestion(question) {
         "</div>";
 }
 
-function renderPoll(poll){
+export function renderPoll(poll){
     return `<div>
                 ${poll.questions.map(
                     question => renderQuestion(question)).join("")}
