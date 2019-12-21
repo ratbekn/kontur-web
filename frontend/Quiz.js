@@ -110,6 +110,6 @@ fetch('/api/poll/' + id, {method: 'GET'})
         })
         .then(function (data1) {
             questions = data1;
-            showNextQuestion(questions);
+            showNextQuestion();
         })
-        .catch(alert);
+        .catch(() => showNextQuestion());
